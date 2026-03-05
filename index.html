@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>申請フォーム</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, "Hiragino Sans", "Meiryo", sans-serif; background: #f0f2f5; padding: 20px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 20px; color: #1a73e8; margin-bottom: 16px; }
+    .selector { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .selector label { font-weight: 600; white-space: nowrap; }
+    .selector select {
+      flex: 1; padding: 10px 14px; font-size: 15px;
+      border-radius: 8px; border: 1px solid #ccc; background: #fff;
+      cursor: pointer;
+    }
+    .frame-wrapper {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid #ddd; background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    iframe { display: block; width: 100%; height: 700px; border: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>申請フォーム</h1>
+    <div class="selector">
+      <label for="form-select">フォームを選択：</label>
+      <select id="form-select" onchange="switchForm()">
+        <option value="https://docs.google.com/forms/d/e/1FAIpQLSeI_FAQzCEkCKZr5siuwJl7vInWrmI1f-tcJSA2do90lbupLg/viewform?embedded=true">購入申請</option>
+        <option value="https://docs.google.com/forms/d/e/1FAIpQLScGYKgCi-J7nG-ev0EOjQNybs--E0c0Vgs-WmMzH_-wH6DGzA/viewform?embedded=true">レンタル申請</option>
+      </select>
+    </div>
+    <div class="frame-wrapper">
+      <iframe id="form-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSeI_FAQzCEkCKZr5siuwJl7vInWrmI1f-tcJSA2do90lbupLg/viewform?embedded=true"></iframe>
+    </div>
+  </div>
+  <script>
+    function switchForm() {
+      var select = document.getElementById('form-select');
+      document.getElementById('form-frame').src = select.value;
+    }
+  </script>
+</body>
+</html>
